@@ -16,6 +16,7 @@ int main(void)
 	}
 
 	write(STDOUT_FILENO, "$ ", 2);
+
 	inputchar = getline(&buf, &sizebuf, stdin);
 	write(STDOUT_FILENO, buf, inputchar);
 	free(buf);

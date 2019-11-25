@@ -11,7 +11,6 @@ int main(void)
 	pid_t my_pid;
 	pid_t pid1;
 	pid_t pid2;
-
 	printf("Before fork\n");
 	pid1 = fork();
 	if (pid1 == 0)

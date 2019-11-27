@@ -1,13 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "shell.h"
 
 int main(void)
 {
 	char *buf;
 	size_t sizebuf = 1024;
 	size_t inputchar;
-	int cont;
+	int cont, i;
+	char **splitBuf;
 
 	buf = malloc(sizebuf * 1);
 
@@ -29,8 +28,24 @@ int main(void)
 				free(buf);
 				exit(0);
 			}
-			write(STDOUT_FILENO, buf, inputchar);
-			/*_error(av[0], buf);*/
+
+			if(inputchar == 1)
+			{
+				continue;
+			}
+
+			/*write(STDOUT_FILENO, buf, inputchar)*/;
+			splitBuf = splitInput(buf);
+			i = 0;
+			/*while(splitBuf[i] != NULL)
+			{
+				printf("%s \n",splitBuf[i]);
+				i++;
+				}*/
+			enviromentShell(splitBuf);
+			exitof(splitBuf, buf);
+			duplicateProcess(buf, splitBuf);
+/*_error(av[0], buf);*/
 		}
 		else
 		{
